@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: order-service
+server:
+  port: 8082
+payment:
+  service:
+    url: ${PAYMENT_SERVICE_URL:http://localhost:8081/api/payments}
+product:
+  service:
+    url: ${PRODUCT_SERVICE_URL:http://localhost:8080/api/products}
