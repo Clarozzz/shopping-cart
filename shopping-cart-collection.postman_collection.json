@@ -183,6 +183,300 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"cesar\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"cesar\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "secure-endpoints",
+			"item": [
+				{
+					"name": "secure-products",
+					"item": [
+						{
+							"name": "secure-list-all-products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "secure-product-by-id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "secure-orders",
+					"item": [
+						{
+							"name": "secure-create-order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\": [\r\n        { \"productId\": 2, \"quantity\": 2 },\r\n        { \"productId\": 8, \"quantity\": 1 }\r\n    ],\r\n    \"customer\": {\r\n        \"customerId\": 1,\r\n        \"name\": \"Juan\",\r\n        \"lastName\": \"Perez\",\r\n        \"email\": \"jperez@gmail.com\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "secure-get-orders",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "secure-order-by-id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/orders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "secure-pay-order",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:9000/api/orders/pay-order/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"orders",
+										"pay-order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "secure-payments",
+					"item": [
+						{
+							"name": "secure-process-payment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZXNhciIsImV4cCI6MTc2NTI0MDk0NX0.Fex4dBWcPeluTQu9VNJhxhATMGzNXA_qnaaT_OgKB3k",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"orderId\": 1,\r\n    \"total\": 120\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/payments/process",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"payments",
+										"process"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		}
 	]
 }

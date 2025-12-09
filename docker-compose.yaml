@@ -20,4 +20,20 @@ services:
     ports:
       - 8081:8081
 
+  auth-service:
+    build: ./auth-service
+    ports:
+      - 8084:8084
+    environment:
+      - SECRET=870e1539029dfba4150819fc3748f49a516f6a3e95eab3cecbbf95c3d6236e79
+    
+  gateway-service:
+    build: ./gateway-service
+    ports:
+      - 9000:9000
+    environment:
+      - SECRET=870e1539029dfba4150819fc3748f49a516f6a3e95eab3cecbbf95c3d6236e79
+      - PRODUCT_SERVICE_URL=http://product-service:8080
+      - ORDER_SERVICE_URL=http://order-service:8082
+      - PAYMENT_SERVICE_URL=http://payment-service:8081
 
