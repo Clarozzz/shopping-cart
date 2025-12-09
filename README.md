@@ -1,2 +1,2 @@
-##Better if ran with Docker:
+# Better if ran with Docker:
 ```docker compose up --build```
